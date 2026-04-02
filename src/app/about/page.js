@@ -247,7 +247,7 @@ export default function AboutPage() {
             <div className="relative w-32 h-32 mx-auto mb-4">
               <div className="absolute inset-0 bg-gradient-to-r from-[#F2C23B] to-[#D4A017] rounded-full opacity-75 blur-md group-hover:opacity-100 transition-opacity"></div>
               <img 
-                src="/images/leadership/abiye_tekle.jpeg" 
+                src="/images/leadership/Abiye_Tekle.jpeg" 
                 alt="Abiye Tekle - Founder & CEO"
                 className="relative w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
@@ -265,7 +265,7 @@ export default function AboutPage() {
             <div className="relative w-32 h-32 mx-auto mb-4">
               <div className="absolute inset-0 bg-gradient-to-r from-[#F2C23B] to-[#D4A017] rounded-full opacity-75 blur-md group-hover:opacity-100 transition-opacity"></div>
               <img 
-                src="/images/leadership/tefera_tibebu.jpeg" 
+                src="/images/leadership/Tefera_Tibebu.jpeg" 
                 alt="Tefera Tibebu - Deputy Managing Director"
                 className="relative w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {
@@ -283,7 +283,7 @@ export default function AboutPage() {
             <div className="relative w-32 h-32 mx-auto mb-4">
               <div className="absolute inset-0 bg-gradient-to-r from-[#F2C23B] to-[#D4A017] rounded-full opacity-75 blur-md group-hover:opacity-100 transition-opacity"></div>
               <img 
-                src="/images/leadership/iyasu_taye.jpeg" 
+                src="/images/leadership/Iyasu_Taye.jpeg" 
                 alt="Iyasu Taye - Director of National Coordination"
                 className="relative w-32 h-32 rounded-full object-cover shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-300"
                 onError={(e) => {

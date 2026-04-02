@@ -24,7 +24,7 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Visionary leader behind ESB, committed to building Ethiopia's largest student literacy platform and expanding its impact across Africa.",
-      image: "/images/leadership/abiye_tekle.jpeg",
+      image: "/images/leadership/Abiye_Tekle.jpeg",
       showFullInfo: true
     },
     {
@@ -34,7 +34,7 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Leads operations, school partnerships, and program execution across multiple cities in Ethiopia.",
-      image: "/images/leadership/tefera_tibebu.jpeg",
+      image: "/images/leadership/Tefera_Tibebu.jpeg",
       showFullInfo: true
     },
     {
@@ -44,7 +44,7 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Oversees national coordination, program alignment, and institutional partnerships across Ethiopia.",
-      image: "/images/leadership/iyasu_taye.jpeg",
+      image: "/images/leadership/Iyasu_Taye.jpeg",
       showFullInfo: true
     },
     {

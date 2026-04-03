@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Footer() {
   const [showToast, setShowToast] = useState(false);
-
+  const [toastMessage, setToastMessage] = useState("");
 
   const currentYear = new Date().getFullYear();
 
@@ -114,7 +114,7 @@ export default function Footer() {
 
             {/* Contact & Newsletter Column */}
             <div className="space-y-6">
-              {/* Contact Info - Single Email */}
+              {/* Contact Info - Updated Emails */}
               <div>
                 <h3 className="text-white font-bold text-lg mb-4 relative inline-block">
                   Contact Info
@@ -131,13 +131,20 @@ export default function Footer() {
                       <span>{phone}</span>
                     </a>
                   ))}
-                  {/* Single Email Only */}
+                  {/* New Emails */}
                   <a 
-                    href="mailto:beeethiopian@gmail.com"
+                    href="mailto:tefe19@gmail.com"
                     className="flex items-center gap-3 text-white/70 hover:text-[#F2C23B] transition-colors group"
                   >
                     <span className="text-[#F2C23B]">✉️</span>
-                    <span>beeethiopian@gmail.com</span>
+                    <span>tefe19@gmail.com</span>
+                  </a>
+                  <a 
+                    href="mailto:eyasutaye770599@gmail.com"
+                    className="flex items-center gap-3 text-white/70 hover:text-[#F2C23B] transition-colors group"
+                  >
+                    <span className="text-[#F2C23B]">✉️</span>
+                    <span>eyasutaye770599@gmail.com</span>
                   </a>
                   {/* Updated Location */}
                   <div className="flex items-start gap-3 text-white/70">

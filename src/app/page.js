@@ -97,9 +97,6 @@ export default function Home() {
                 </svg>
               </span>
             </button>
-              <a href="https://register.ethiopianspellingbee.org">
-  Register
-</a>
             
             <Link href="/about">
               <button className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 border-2 hover:scale-105 hover:shadow-lg"

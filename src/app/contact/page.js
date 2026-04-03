@@ -22,6 +22,10 @@ export default function ContactPage() {
     { number: "+1 571 355 9287", label: "International Contact", location: "USA Office" }
   ];
 
+  // WhatsApp number (format: country code + number without spaces or plus sign)
+  const whatsappNumber = "+15713559287"; // Based on the primary contact number
+  const whatsappMessage = "Hello ESB Team...";
+
   return (
     <main className="min-h-screen" style={{ backgroundColor: "#F9FAFB" }}>
       
@@ -59,6 +63,21 @@ export default function ContactPage() {
             Have questions, partnership inquiries, or want to join the movement? 
             We'd love to hear from you!
           </p>
+
+          {/* WhatsApp Button in Hero */}
+          <div className="mt-8">
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl bg-[#25D366] text-white hover:shadow-2xl"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.032 2.001c-5.514 0-9.996 4.48-10.002 9.994-.002 1.793.47 3.544 1.363 5.072l-1.379 4.893 5.075-1.271c1.465.832 3.109 1.27 4.794 1.27h.004c5.514 0 9.997-4.48 10.003-9.994.002-5.514-4.478-9.996-9.99-10.002h-.868zm4.873 14.236c-.264.742-1.563 1.452-2.155 1.521-.528.061-1.116.089-1.802-.057-.372-.079-.858-.183-1.484-.353-1.666-.451-3.177-1.682-4.338-3.083-.565-.682-1.096-1.428-1.459-2.249-.284-.642-.28-1.244-.016-1.814.189-.408.554-.767.949-1.017.234-.148.491-.234.734-.353.169-.082.356-.112.533-.168.177-.056.355-.021.501.122.283.278.678.83.898 1.173.121.189.202.401.235.62.033.219-.027.444-.167.63-.14.186-.305.373-.475.56-.103.113-.213.231-.32.338-.213.213-.435.443-.285.744.148.301.657 1.082 1.385 1.725.952.841 1.751 1.161 2.149 1.295.236.079.5.098.749.051.25-.047.49-.181.68-.36.188-.179.393-.439.592-.689.199-.25.422-.308.684-.215.261.093 1.655.776 1.939.916.284.14.472.209.543.326.071.117.071.682-.193 1.424z"/>
+              </svg>
+              <span>Chat with us on WhatsApp</span>
+            </a>
+          </div>
         </div>
         
         {/* Bottom Wave */}
@@ -102,7 +121,31 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Email Card - Original Position */}
+            {/* WhatsApp Card */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#25D36620] flex items-center justify-center">
+                  <span className="text-2xl">💬</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: "#0B2C5F" }}>WhatsApp</h3>
+              </div>
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-3 rounded-lg hover:bg-[#25D36610] transition-all group"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-gray-800 group-hover:text-[#25D366] transition-colors">+251 91 144 3453</p>
+                    <p className="text-sm text-gray-500">Available 9AM - 6PM</p>
+                  </div>
+                  <span className="text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">💬</span>
+                </div>
+              </a>
+            </div>
+
+            {/* Email Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-[#F2C23B20] flex items-center justify-center">
@@ -110,10 +153,17 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-xl font-bold" style={{ color: "#0B2C5F" }}>Email Us</h3>
               </div>
-              <a href="mailto:beeethiopian@gmail.com" className="block p-3 rounded-lg hover:bg-gray-50 transition-all">
-                <p className="font-semibold text-gray-800">beeethiopian@gmail.com</p>
-                <p className="text-sm text-gray-500">General Inquiries</p>
-              </a>
+              <div className="space-y-3">
+                <a href="mailto:tefe19@gmail.com" className="block p-3 rounded-lg hover:bg-gray-50 transition-all group">
+                  <p className="font-semibold text-gray-800 group-hover:text-[#0B2C5F] transition-colors">tefe19@gmail.com</p>
+                  <p className="text-sm text-gray-500">General Inquiries</p>
+                </a>
+                <div className="border-b border-gray-100"></div>
+                <a href="mailto:eyasutaye770599@gmail.com" className="block p-3 rounded-lg hover:bg-gray-50 transition-all group">
+                  <p className="font-semibold text-gray-800 group-hover:text-[#0B2C5F] transition-colors">eyasutaye770599@gmail.com</p>
+                  <p className="text-sm text-gray-500">Partnership & Support</p>
+                </a>
+              </div>
             </div>
 
             {/* Social Media Card */}
@@ -153,7 +203,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right Column - Map (Where Contact Form used to be) */}
+          {/* Right Column - Map */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="p-6 border-b border-gray-100">
@@ -202,12 +252,18 @@ export default function ContactPage() {
                 Learn About ESB
               </button>
             </Link>
-            <button 
-              onClick={() => showNotification("📞 Call us at +251 91 144 3453 for immediate assistance!")}
-              className="px-8 py-3 rounded-full font-bold transition-all hover:scale-105 border-2" style={{ borderColor: "#0B2C5F", color: "#0B2C5F" }}
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 rounded-full font-bold transition-all hover:scale-105 border-2 inline-flex items-center gap-2 justify-center" 
+              style={{ borderColor: "#0B2C5F", color: "#0B2C5F", backgroundColor: "white" }}
             >
-              Call Now
-            </button>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.032 2.001c-5.514 0-9.996 4.48-10.002 9.994-.002 1.793.47 3.544 1.363 5.072l-1.379 4.893 5.075-1.271c1.465.832 3.109 1.27 4.794 1.27h.004c5.514 0 9.997-4.48 10.003-9.994.002-5.514-4.478-9.996-9.99-10.002h-.868zm4.873 14.236c-.264.742-1.563 1.452-2.155 1.521-.528.061-1.116.089-1.802-.057-.372-.079-.858-.183-1.484-.353-1.666-.451-3.177-1.682-4.338-3.083-.565-.682-1.096-1.428-1.459-2.249-.284-.642-.28-1.244-.016-1.814.189-.408.554-.767.949-1.017.234-.148.491-.234.734-.353.169-.082.356-.112.533-.168.177-.056.355-.021.501.122.283.278.678.83.898 1.173.121.189.202.401.235.62.033.219-.027.444-.167.63-.14.186-.305.373-.475.56-.103.113-.213.231-.32.338-.213.213-.435.443-.285.744.148.301.657 1.082 1.385 1.725.952.841 1.751 1.161 2.149 1.295.236.079.5.098.749.051.25-.047.49-.181.68-.36.188-.179.393-.439.592-.689.199-.25.422-.308.684-.215.261.093 1.655.776 1.939.916.284.14.472.209.543.326.071.117.071.682-.193 1.424z"/>
+              </svg>
+              WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -225,9 +281,6 @@ export default function ContactPage() {
         }
         .animate-slide-up {
           animation: slide-up 0.3s ease-out;
-        }
-        .delay-1000 {
-          animation-delay: 1s;
         }
       `}</style>
     </main>

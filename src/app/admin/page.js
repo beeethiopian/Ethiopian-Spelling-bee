@@ -339,7 +339,7 @@ export default function AdminPage() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
                   <img 
-                    src="/images/logo.jpg" 
+                    src="/images/logo-1.jpg" 
                     alt="ESB Logo" 
                     className="w-10 h-10 object-cover rounded-full"
                     onError={(e) => {

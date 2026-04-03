@@ -5,11 +5,14 @@ import { getGalleryImages } from "../../services/galleryService";
 
 export default function GalleryPage() {
   const [images, setImages] = useState([]);
+  const [groupedImages, setGroupedImages] = useState({});
+  const [selectedYear, setSelectedYear] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const [availableYears, setAvailableYears] = useState([]);
 
   const showNotification = (message) => {
     setToastMessage(message);
@@ -23,6 +26,30 @@ export default function GalleryPage() {
         setLoading(true);
         const data = await getGalleryImages();
         setImages(data);
+        
+        // Group images by year
+        const grouped = {};
+        const years = new Set();
+        
+        data.forEach((item) => {
+          const year = item.year || "Uncategorized";
+          years.add(year);
+          if (!grouped[year]) {
+            grouped[year] = [];
+          }
+          grouped[year].push(item);
+        });
+        
+        // Sort years in descending order (newest first)
+        const sortedYears = Array.from(years).sort((a, b) => {
+          if (a === "Uncategorized") return 1;
+          if (b === "Uncategorized") return -1;
+          return b - a;
+        });
+        
+        setGroupedImages(grouped);
+        setAvailableYears(sortedYears);
+        setSelectedYear(sortedYears[0]); // Select first year by default
       } catch (error) {
         console.error(error);
         showNotification("❌ Failed to load images");
@@ -34,9 +61,12 @@ export default function GalleryPage() {
     fetchImages();
   }, []);
 
+  // Get current images based on selected year
+  const currentImages = selectedYear ? groupedImages[selectedYear] || [] : [];
+
   const openFullscreen = (index) => {
     setCurrentIndex(index);
-    setSelectedImage(images[index]);
+    setSelectedImage(currentImages[index]);
     document.body.style.overflow = "hidden";
   };
 
@@ -46,10 +76,10 @@ export default function GalleryPage() {
   };
 
   const nextImage = () => {
-    if (currentIndex < images.length - 1) {
+    if (currentIndex < currentImages.length - 1) {
       const newIndex = currentIndex + 1;
       setCurrentIndex(newIndex);
-      setSelectedImage(images[newIndex]);
+      setSelectedImage(currentImages[newIndex]);
     } else {
       showNotification("📸 This is the last image");
     }
@@ -59,7 +89,7 @@ export default function GalleryPage() {
     if (currentIndex > 0) {
       const newIndex = currentIndex - 1;
       setCurrentIndex(newIndex);
-      setSelectedImage(images[newIndex]);
+      setSelectedImage(currentImages[newIndex]);
     } else {
       showNotification("📸 This is the first image");
     }
@@ -75,7 +105,7 @@ export default function GalleryPage() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage, currentIndex]);
+  }, [selectedImage, currentIndex, currentImages]);
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: "#F9FAFB" }}>
@@ -129,8 +159,47 @@ export default function GalleryPage() {
         </div>
       </section>
 
+      {/* Year Filter Section */}
+      {!loading && availableYears.length > 0 && (
+        <section className="pt-8 px-6 max-w-7xl mx-auto">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <h2 className="text-2xl font-bold" style={{ color: "#0B2C5F" }}>
+              Browse by Year
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {availableYears.map((year) => (
+                <button
+                  key={year}
+                  onClick={() => setSelectedYear(year)}
+                  className={`px-5 py-2 rounded-full font-semibold transition-all duration-300 ${
+                    selectedYear === year
+                      ? "bg-[#F2C23B] text-[#0B2C5F] shadow-lg scale-105"
+                      : "bg-white text-gray-600 hover:bg-gray-100 hover:shadow-md"
+                  }`}
+                >
+                  {year === "Uncategorized" ? "📷 Uncategorized" : `🏆 ${year}`}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Year Stats */}
+          <div className="mb-6 pb-4 border-b border-gray-200">
+            <div className="flex justify-between items-center">
+              <div>
+                <span className="text-sm text-gray-500">Showing</span>
+                <span className="font-semibold text-[#0B2C5F] ml-1">
+                  {currentImages.length} Photos
+                </span>
+                <span className="text-sm text-gray-500 ml-2">from {selectedYear}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Gallery Grid */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
+      <section className="py-8 px-6 max-w-7xl mx-auto">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
             <div className="relative w-20 h-20">
@@ -147,27 +216,21 @@ export default function GalleryPage() {
           </div>
         ) : (
           <>
-            {/* Stats Bar */}
-            <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
-              <div>
-                <span className="text-sm text-gray-500">Showing</span>
-                <span className="font-semibold text-[#0B2C5F] ml-1">{images.length} Photos</span>
-              </div>
-              <div className="flex gap-2">
-                <button className="px-3 py-1 rounded-lg text-sm bg-gray-100 hover:bg-gray-200 transition-colors">
-                  Latest First
-                </button>
-              </div>
-            </div>
-
             {/* Masonry-like Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {images.map((item, index) => (
+              {currentImages.map((item, index) => (
                 <div
                   key={item.id}
                   onClick={() => openFullscreen(index)}
                   className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white"
                 >
+                  {/* Year Badge */}
+                  {item.year && (
+                    <div className="absolute top-3 right-3 z-10 bg-[#F2C23B] text-[#0B2C5F] text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                      {item.year}
+                    </div>
+                  )}
+                  
                   {/* Image Container */}
                   <div className="relative overflow-hidden h-64">
                     <img
@@ -245,8 +308,15 @@ export default function GalleryPage() {
 
           {/* Image Counter */}
           <div className="absolute top-4 left-4 z-10 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-            {currentIndex + 1} / {images.length}
+            {currentIndex + 1} / {currentImages.length}
           </div>
+
+          {/* Year Badge in Modal */}
+          {selectedImage.year && (
+            <div className="absolute top-20 left-4 z-10 bg-[#F2C23B] text-[#0B2C5F] font-bold px-3 py-1 rounded-full shadow-md text-sm">
+              🏆 {selectedImage.year}
+            </div>
+          )}
 
           {/* Main Image */}
           <div

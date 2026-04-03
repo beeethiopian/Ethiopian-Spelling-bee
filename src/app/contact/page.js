@@ -23,8 +23,8 @@ export default function ContactPage() {
   ];
 
   // WhatsApp number (format: country code + number without spaces or plus sign)
-  const whatsappNumber = "+15713559287"; // Based on the primary contact number
-  const whatsappMessage = "Hello ESB Team...";
+  const whatsappNumber = "15713559287"; // Without the + sign
+  const whatsappMessage = "Hello ESB Team, ";
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: "#F9FAFB" }}>
@@ -125,7 +125,9 @@ export default function ContactPage() {
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-full bg-[#25D36620] flex items-center justify-center">
-                  <span className="text-2xl">💬</span>
+                  <svg className="w-6 h-6 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.032 2.001c-5.514 0-9.996 4.48-10.002 9.994-.002 1.793.47 3.544 1.363 5.072l-1.379 4.893 5.075-1.271c1.465.832 3.109 1.27 4.794 1.27h.004c5.514 0 9.997-4.48 10.003-9.994.002-5.514-4.478-9.996-9.99-10.002h-.868zm4.873 14.236c-.264.742-1.563 1.452-2.155 1.521-.528.061-1.116.089-1.802-.057-.372-.079-.858-.183-1.484-.353-1.666-.451-3.177-1.682-4.338-3.083-.565-.682-1.096-1.428-1.459-2.249-.284-.642-.28-1.244-.016-1.814.189-.408.554-.767.949-1.017.234-.148.491-.234.734-.353.169-.082.356-.112.533-.168.177-.056.355-.021.501.122.283.278.678.83.898 1.173.121.189.202.401.235.62.033.219-.027.444-.167.63-.14.186-.305.373-.475.56-.103.113-.213.231-.32.338-.213.213-.435.443-.285.744.148.301.657 1.082 1.385 1.725.952.841 1.751 1.161 2.149 1.295.236.079.5.098.749.051.25-.047.49-.181.68-.36.188-.179.393-.439.592-.689.199-.25.422-.308.684-.215.261.093 1.655.776 1.939.916.284.14.472.209.543.326.071.117.071.682-.193 1.424z"/>
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold" style={{ color: "#0B2C5F" }}>WhatsApp</h3>
               </div>
@@ -137,10 +139,12 @@ export default function ContactPage() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-semibold text-gray-800 group-hover:text-[#25D366] transition-colors">+251 91 144 3453</p>
+                    <p className="font-semibold text-gray-800 group-hover:text-[#25D366] transition-colors">+1 571 355 9287</p>
                     <p className="text-sm text-gray-500">Available 9AM - 6PM</p>
                   </div>
-                  <span className="text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">💬</span>
+                  <svg className="w-5 h-5 text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.032 2.001c-5.514 0-9.996 4.48-10.002 9.994-.002 1.793.47 3.544 1.363 5.072l-1.379 4.893 5.075-1.271c1.465.832 3.109 1.27 4.794 1.27h.004c5.514 0 9.997-4.48 10.003-9.994.002-5.514-4.478-9.996-9.99-10.002h-.868zm4.873 14.236c-.264.742-1.563 1.452-2.155 1.521-.528.061-1.116.089-1.802-.057-.372-.079-.858-.183-1.484-.353-1.666-.451-3.177-1.682-4.338-3.083-.565-.682-1.096-1.428-1.459-2.249-.284-.642-.28-1.244-.016-1.814.189-.408.554-.767.949-1.017.234-.148.491-.234.734-.353.169-.082.356-.112.533-.168.177-.056.355-.021.501.122.283.278.678.83.898 1.173.121.189.202.401.235.62.033.219-.027.444-.167.63-.14.186-.305.373-.475.56-.103.113-.213.231-.32.338-.213.213-.435.443-.285.744.148.301.657 1.082 1.385 1.725.952.841 1.751 1.161 2.149 1.295.236.079.5.098.749.051.25-.047.49-.181.68-.36.188-.179.393-.439.592-.689.199-.25.422-.308.684-.215.261.093 1.655.776 1.939.916.284.14.472.209.543.326.071.117.071.682-.193 1.424z"/>
+                  </svg>
                 </div>
               </a>
             </div>

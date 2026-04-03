@@ -95,7 +95,7 @@ export default function LoginPage() {
             <div className="relative">
               <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-lg">
                 <img 
-                  src="/images/logo.jpg" 
+                  src="/images/logo-1.jpg" 
                   alt="ESB Logo" 
                   className="w-16 h-16 object-cover rounded-full"
                   onError={(e) => {

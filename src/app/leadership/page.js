@@ -24,7 +24,7 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Visionary leader behind ESB, committed to building Ethiopia's largest student literacy platform and expanding its impact across Africa.",
-      image: "/images/leadership/Abiye_Tekle.jpeg",
+      image: "/images/leadership/abiye_tekle.jpeg",
       showFullInfo: true
     },
     {
@@ -34,7 +34,7 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Leads operations, school partnerships, and program execution across multiple cities in Ethiopia.",
-      image: "/images/leadership/Tefera_Tibebu.jpeg",
+      image: "/images/leadership/tefera_tibebu.jpeg",
       showFullInfo: true
     },
     {
@@ -44,15 +44,24 @@ export default function LeadershipPage() {
       category: "Executive Leadership",
       gender: "male",
       bio: "Oversees national coordination, program alignment, and institutional partnerships across Ethiopia.",
-      image: "/images/leadership/Iyasu_Taye.jpeg",
+      image: "/images/leadership/iyasu_taye.jpeg",
       showFullInfo: true
     },
     {
       id: 4,
       name: "Aschalew Shewarega",
       position: "Government Education Bureaus Liaison",
+      category: "Executive Leadership",
       image: "/images/leadership/aschalew_shewarega.jpeg",
-      showFullInfo: false
+      showFullInfo: true
+    },
+    {
+      id: 9,
+      name: "Wubete Tegegne",
+      position: "Finance and Payroll",
+      category: "Executive Leadership",
+      image: "/images/leadership/wubete_tegegne.jpeg",
+      showFullInfo: true
     },
     {
       id: 5,
@@ -80,13 +89,6 @@ export default function LeadershipPage() {
       name: "Tadilo Muhabaw",
       image: "/images/leadership/tadilo_muhabaw.jpeg",
       position: "Regional Coordinator at Woldiya City",
-      showFullInfo: false
-    },
-    {
-      id: 9,
-      name: "Wubete Tegegne",
-      position: "Finance and Payroll",
-      image: "/images/leadership/wubete_tegegne.jpeg",
       showFullInfo: false
     }
   ];

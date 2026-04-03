@@ -16,6 +16,7 @@ export default function AdminPage() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [year, setYear] = useState("");
   const [image, setImage] = useState(null);
 
   const [images, setImages] = useState([]);
@@ -30,6 +31,10 @@ export default function AdminPage() {
   const [itemToDelete, setItemToDelete] = useState(null);
 
   const ADMIN_EMAIL = "beeethiopian@gmail.com";
+  
+  // Generate years from 2014 to current year + 1
+  const currentYear = new Date().getFullYear();
+  const availableYears = Array.from({ length: currentYear - 2013 }, (_, i) => currentYear - i);
 
   const showNotification = (message, type = "success") => {
     setToastMessage(message);
@@ -92,6 +97,11 @@ export default function AdminPage() {
       return;
     }
 
+    if (!year) {
+      showNotification("Please select a year", "error");
+      return;
+    }
+
     try {
       setSubmitting(true);
 
@@ -100,6 +110,7 @@ export default function AdminPage() {
         await updateImage(editingId, {
           title,
           description,
+          year: parseInt(year),
         });
         showNotification("Image updated successfully!", "success");
       } else {
@@ -137,6 +148,7 @@ export default function AdminPage() {
           {
             title,
             description,
+            year: parseInt(year),
             image_url: imageUrl,
             public_id: publicId,
           },
@@ -148,6 +160,7 @@ export default function AdminPage() {
 
       setTitle("");
       setDescription("");
+      setYear("");
       setImage(null);
       setEditingId(null);
 
@@ -166,6 +179,7 @@ export default function AdminPage() {
     setEditingId(item.id);
     setTitle(item.title);
     setDescription(item.description);
+    setYear(item.year?.toString() || "");
     setImage(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
     showNotification(`Editing: ${item.title}`, "success");
@@ -224,6 +238,7 @@ export default function AdminPage() {
     setEditingId(null);
     setTitle("");
     setDescription("");
+    setYear("");
     setImage(null);
     showNotification("Edit cancelled", "success");
   };
@@ -339,7 +354,7 @@ export default function AdminPage() {
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
                   <img 
-                    src="/images/logo-1.jpg" 
+                    src="/images/logo.jpg" 
                     alt="ESB Logo" 
                     className="w-10 h-10 object-cover rounded-full"
                     onError={(e) => {
@@ -375,7 +390,7 @@ export default function AdminPage() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-md p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -384,6 +399,20 @@ export default function AdminPage() {
               </div>
               <div className="w-12 h-12 rounded-full bg-[#F2C23B20] flex items-center justify-center">
                 <span className="text-2xl">📸</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-md p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-500 text-sm">Years Covered</p>
+                <p className="text-3xl font-bold" style={{ color: "#0B2C5F" }}>
+                  {new Set(images.map(img => img.year).filter(Boolean)).size}
+                </p>
+              </div>
+              <div className="w-12 h-12 rounded-full bg-[#F2C23B20] flex items-center justify-center">
+                <span className="text-2xl">📅</span>
               </div>
             </div>
           </div>
@@ -422,7 +451,7 @@ export default function AdminPage() {
               {editingId ? "✏️ Edit Image" : "📤 Upload New Image"}
             </h2>
             <p className="text-white/70 text-sm mt-1">
-              {editingId ? "Update the title and description" : "Add a new image to the gallery"}
+              {editingId ? "Update the title, description, and year" : "Add a new image to the gallery"}
             </p>
           </div>
           
@@ -451,6 +480,23 @@ export default function AdminPage() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Year <span className="text-red-500">*</span>
+              </label>
+              <select
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F2C23B] focus:border-transparent transition-all bg-white"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+              >
+                <option value="">Select competition year</option>
+                {availableYears.map((yr) => (
+                  <option key={yr} value={yr}>{yr}</option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-400 mt-1">The year this photo was taken or the competition year</p>
             </div>
 
             {!editingId && (
@@ -544,12 +590,21 @@ export default function AdminPage() {
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
+                    {/* Year Badge on Image */}
+                    {item.year && (
+                      <div className="absolute top-2 right-2 bg-[#F2C23B] text-[#0B2C5F] text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                        {item.year}
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                   
                   <div className="p-4">
                     <h3 className="font-bold text-gray-800 line-clamp-1">{item.title}</h3>
                     <p className="text-gray-600 text-sm line-clamp-2 mt-1">{item.description}</p>
+                    {item.year && (
+                      <p className="text-xs text-[#D4A017] font-semibold mt-2">🏆 {item.year}</p>
+                    )}
                     
                     <div className="flex gap-2 mt-4">
                       <button

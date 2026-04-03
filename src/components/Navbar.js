@@ -52,7 +52,7 @@ export default function Navbar() {
               <div className="absolute inset-0 rounded-full bg-[#F2C23B] opacity-75 blur-md group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo-1.jpg"
                   alt="ESB Logo"
                   width={48}
                   height={48}

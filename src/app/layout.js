@@ -60,9 +60,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'google-site-verification=jsDLQCf_fqi-9nGgR3L3P1Y2I3wTxNH9FAGaIqBQiDY', // Add your code here
-  },
 };
 
 export default function RootLayout({ children }) {

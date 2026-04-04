@@ -61,7 +61,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE', // Add your code here
+    google: 'google-site-verification=jsDLQCf_fqi-9nGgR3L3P1Y2I3wTxNH9FAGaIqBQiDY', // Add your code here
   },
 };
 

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/ # Optional, if you have an API
+Disallow: /admin/ # Your admin panel
+
+Sitemap: https://www.ethiopianspellingbee.org/sitemap.xml

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const TELEGRAM_BOT_URL = "https://t.me/Ethiopianspellingbeebot";
+
 export default function Home() {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -12,6 +14,10 @@ export default function Home() {
     setToastMessage(message);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
+  };
+
+  const openTelegramBot = () => {
+    window.open(TELEGRAM_BOT_URL, "_blank", "noopener,noreferrer");
   };
 
   useEffect(() => {
@@ -83,7 +89,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => showNotification("🎉 Join the Program form will open soon!")}
+              onClick={openTelegramBot}
               className="group relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden shadow-xl"
               style={{
                 background: "linear-gradient(135deg, #F2C23B 0%, #D4A017 100%)",
@@ -1004,7 +1010,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => showNotification("📝 Registration form will open soon!")}
+              onClick={openTelegramBot}
               className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-xl"
               style={{ backgroundColor: "#0B2C5F", color: "#F2C23B" }}
             >

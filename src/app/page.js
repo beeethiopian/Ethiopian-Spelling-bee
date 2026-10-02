@@ -44,10 +44,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* Floating Sticky CTA (Non-functional, conversion-focused) */}
+      {/* Floating Sticky CTA */}
       <div className="hidden lg:block fixed bottom-8 right-8 z-40 animate-bounce-slow">
         <button
-          onClick={() => showNotification("🎉 Join the Program form will open soon!")}
+          onClick={openTelegramBot}
           className="px-6 py-3 rounded-full font-bold shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-2xl flex items-center gap-2"
           style={{
             background: "linear-gradient(135deg, #F2C23B 0%, #D4A017 100%)",
@@ -408,7 +408,7 @@ export default function Home() {
                 </div>
               </div>
               <button 
-                onClick={() => showNotification("📋 School registration form will open soon!")}
+                onClick={openTelegramBot}
                 className="px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg w-full relative overflow-hidden group/btn"
                 style={{ backgroundColor: "#0B2C5F", color: "white" }}
               >
@@ -441,7 +441,7 @@ export default function Home() {
                 </div>
               </div>
               <button 
-                onClick={() => showNotification("📝 Student registration form will open soon!")}
+                onClick={openTelegramBot}
                 className="px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg w-full relative overflow-hidden group/btn"
                 style={{ backgroundColor: "#0B2C5F", color: "white" }}
               >
@@ -474,7 +474,7 @@ export default function Home() {
                 </div>
               </div>
               <button 
-                onClick={() => showNotification("💼 Sponsorship information will be shared soon!")}
+                onClick={openTelegramBot}
                 className="px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg w-full relative overflow-hidden group/btn"
                 style={{ backgroundColor: "#0B2C5F", color: "white" }}
               >
@@ -643,7 +643,7 @@ export default function Home() {
                 </div>
               </div>
               <button 
-                onClick={() => showNotification("📧 Partnership opportunities will be shared soon!")}
+                onClick={openTelegramBot}
                 className="px-8 py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 style={{ backgroundColor: "#F2C23B", color: "#0B2C5F" }}
               >
